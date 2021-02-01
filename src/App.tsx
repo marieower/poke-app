@@ -1,8 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './App.css';
 import { List } from './features/list/List';
 
 function App() {
