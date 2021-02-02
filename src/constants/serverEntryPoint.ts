@@ -1,1 +1,1 @@
-export const serverEntryPoint = 'https://pokeapi.co/api/v2/';
+export const SERVER_ENTRY_POINT = 'https://pokeapi.co/api/v2/';

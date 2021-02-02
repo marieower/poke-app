@@ -1,11 +1,15 @@
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
+import { PageWrapper } from '../../components/PageWrapper';
 import { pokeControl } from '../../services';
+import { ListItem } from './components/ListItem';
 import { fetchList } from './listSlice';
 
 export const List: React.FC = () => {
-  const { list, isFetching } = useSelector((state: RootState) => state.list);
+  const { list, isFetching, error } = useSelector(
+    (state: RootState) => state.list
+  );
 
   const dispatch = useDispatch();
 
@@ -14,14 +18,15 @@ export const List: React.FC = () => {
   }, []);
 
   const renderList = useMemo(() => {
-    if (isFetching) {
-      return <p>.............loading...........</p>;
-    }
     if (list.length) {
-      return list.map((item) => <p key={item.id}>{item.name}</p>);
+      return list.map((item) => <ListItem item={item} key={item.id} />);
     }
     return null;
-  }, [list, isFetching]);
+  }, [list]);
 
-  return <div>{renderList}</div>;
+  return (
+    <PageWrapper isFetching={isFetching} error={error}>
+      {renderList}
+    </PageWrapper>
+  );
 };

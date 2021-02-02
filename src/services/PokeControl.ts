@@ -1,16 +1,15 @@
-import { IntroPokemonDto } from './../dtos/IntroPokemonDto';
-import { EntityEnum } from './../enums/EntityEnum';
 import axios, { AxiosInstance } from 'axios';
-import { serverEntryPoint } from '../constants/serverEntryPoint';
-import { IntroPokemon } from '../types/IntroPokemon';
+import { SERVER_ENTRY_POINT } from '../constants/serverEntryPoint';
 import { PokemonListDto } from '../dtos/PokemonListDto';
+import { IntroPokemon } from '../types/IntroPokemon';
+import { EntityEnum } from './../enums/EntityEnum';
 
 export class PokeControl {
   private axios: AxiosInstance;
 
   constructor() {
     this.axios = axios.create({
-      baseURL: serverEntryPoint,
+      baseURL: SERVER_ENTRY_POINT,
       timeout: 20000,
     });
   }
